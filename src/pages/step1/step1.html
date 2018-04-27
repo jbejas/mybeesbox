@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="bg">
+    <img src="assets/imgs/bg-step1.jpg">
+    <p class="title">PERSONALIZED<br>
+    ACCOUNT</p>
+    <p class="subtitle">Question 1 of 4.</p>
+  </div>
+  <div class="container" padding-horizontal>
+    <h2>What is your GENDER?</h2>
+    <button ion-button full text-center (click)="setGender(1)">
+      <img class="female" src="assets/imgs/female.png">
+      <label>FEMALE</label> 
+    </button>
+    <button ion-button full text-center (click)="setGender(2)">
+      <img class="male" src="assets/imgs/male.png">
+      <label>MALE</label> 
+    </button>
+    <button ion-button full text-center (click)="setGender(3)">
+      <img class="other" src="assets/imgs/other.png">
+      <label>OTHER</label> 
+    </button>
+
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col class="disclaimer">
+          You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+        </ion-col>
+        <ion-col>
+          <button ion-button full class="gradient-bt" (click)="step2()"><div class="mask"></div>SKIP QUESTION</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+</ion-content>

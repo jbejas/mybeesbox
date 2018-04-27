@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="bg">
+    <img src="assets/imgs/bg1.jpg">
+    <p class="title">LOGIN INTO<br>
+    YOUR BEESBOX<br>
+    ACCOUNT</p>
+    <p class="subtitle">It's as easy as 1, 2, bee.</p>
+  </div>
+  <ion-list no-lines>
+
+    <ion-item>
+      <ion-input type="email" [(ngModel)]="email" placeholder="Email Address"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  <button ion-button class="gradient-bt" (click)="loginUser()">LET'S BEGIN</button>
+  <button ion-button outline (click)="register()">Don't have an Account? Register.</button>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8>
+        <ion-item no-lines class="email-opt-in">
+          
+        </ion-item>
+      </ion-col>
+      <ion-col col-4 text-right class="forgot-password">
+        Forgot password?
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

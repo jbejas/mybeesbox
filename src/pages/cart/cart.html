@@ -1,0 +1,59 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="bg">
+    <img src="assets/imgs/bg2.jpg">
+    <p class="title"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Keep Shopping</p>
+    <p class="subtitle">CART <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon></p>
+  </div>
+  <div class="product" *ngFor="let product of products; let i = index;">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-9>
+          <h1>{{product.title}}</h1>
+        </ion-col>
+        <ion-col col-3 text-right>
+          <button ion-button full color="light" round (click)="removeItem(i)">REMOVE</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col><img class="product-image" [src]="product.imagen"></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="price">Price:</ion-col>
+        <ion-col text-right class="price">${{product.price[0]}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="cart-meta">Shipping:</ion-col>
+      <ion-col text-right class="price">$6.00</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="cart-meta">Tax:</ion-col>
+      <ion-col text-right class="price">$6.00</ion-col>
+    </ion-row>
+  </ion-grid>
+  <hr>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="price">Total:</ion-col>
+      <ion-col text-right class="price">${{total}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-8>
+        <ion-input placeholder="Promo Code" type="text" [(ngModel)]="code"></ion-input>
+      </ion-col>
+      <ion-col col-4>
+        <button ion-button full class="gradient-bt" (click)="step2()"><div class="mask"></div>APPLY CODE</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div padding>
+    <button ion-button full round class="gradient-bt" (click)="completeOrder()">COMPLETE ORDER</button>
+  </div>
+</ion-content>

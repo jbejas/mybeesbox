@@ -1,0 +1,117 @@
+page-product {
+    
+    .content-md {
+        .bg {
+            height: 180px;
+        }
+    }
+
+    .content-ios {
+        .bg {
+            height: 160px;
+        }
+    }
+
+    .menu-bt {
+        position: absolute;
+        right: 0;
+        z-index: 100;
+        width: 50px;
+        height: 50px;
+        background: #FFF;
+        cursor: pointer;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .first-block {
+
+        position: relative;
+        height: 210px;
+        overflow: hidden;
+        
+        img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -2;
+        }
+
+        .first-line {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            font-size: 2rem;
+            color: #000;
+            background: #FFF;
+            padding: 5px 10px;
+            height: 32px;
+            font-weight: bold;
+        }
+
+        .second-line {
+            position: absolute;
+            top: 92px;
+            left: 20px;
+            font-size: 2rem;
+            color: #000;
+            background: #FFF;
+            padding: 5px 10px;
+            height: 32px;
+            font-weight: bold;
+        }
+
+        .third-line {
+            position: absolute;
+            top: 132px;
+            left: 20px;
+            font-size: 1.2rem;
+            color: #000;
+            background: #FFF;
+            padding: 5px 20px 5px 5px;
+            height: 24px;
+            font-weight: bold;
+        }
+
+    }
+
+    ion-col > button {
+        margin-top: 10px !important;
+        border-radius: 5px !important;
+        font-weight: bold;
+        color: #000 !important;
+        .button-inner {
+            padding-top: 5px !important;
+            .mask {
+                position: absolute;
+                top: 10.4%;
+                left: 3%;
+                width: 94%;
+                height: 80%;
+                background: #FFF;
+                z-index: -1;
+                display: block;
+            }
+        }
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .product-image {
+        width: 100%;
+        height: auto;
+    }
+
+}

@@ -1,0 +1,22 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="bg">
+    <img src="assets/imgs/bg2.jpg">
+    <p class="title">FREQUENTLY ASKED<br>
+    QUESTIONS</p>
+  </div>
+  <div class="container" padding-horizontal>
+    
+    <ion-list>
+
+      <ion-item *ngFor="let f of faqs">
+        <h2>{{f.title}}</h2>
+        <p>{{f.description}}</p>
+      </ion-item>
+    
+    </ion-list>
+  </div>
+  
+</ion-content>

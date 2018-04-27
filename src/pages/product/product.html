@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="first-block">
+    <img src="assets/imgs/bg-cats.jpg">
+    <div class="first-line">PRE-CURATED</div>
+    <div class="second-line">BOXES</div>
+    <div class="third-line">Items made just for Him or Her</div>
+  </div>
+  <div padding>
+    <img class="product-image" [src]="product.imagen">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-8>
+          <h1>{{product.title}}</h1>
+        </ion-col>
+        <ion-col col-4 text-right>
+          <h2>${{product.price[0]}}</h2>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{product.description}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-left>
+          <button ion-button (click)="goBack()">BACK</button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button full class="gradient-bt" (click)="addToCart()"><div class="mask"></div>ADD TO CART</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

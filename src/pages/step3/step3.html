@@ -1,0 +1,64 @@
+<ion-content>
+  <div class="bg">
+    <img src="assets/imgs/bg-step1.jpg">
+    <p class="title">PERSONALIZED<br>
+    ACCOUNT</p>
+    <p class="subtitle">Question 3 of 4</p>
+  </div>
+  <div class="container" padding-horizontal>
+    <h2>Contact Information</h2>
+    
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="lastname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Address</ion-label>
+        <ion-input type="text" [(ngModel)]="address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>City</ion-label>
+        <ion-input type="text" [(ngModel)]="city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>State</ion-label>
+        <ion-input type="text" [(ngModel)]="state"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>ZIP Code</ion-label>
+        <ion-input type="text" [(ngModel)]="zip"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Phone Number</ion-label>
+        <ion-input type="text" [(ngModel)]="phone"></ion-input>
+      </ion-item>
+    
+    </ion-list>
+
+    <button ion-button full round (click)="saveUserInformation()">NEXT</button>
+
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col class="disclaimer">
+          You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+        </ion-col>
+        <ion-col>
+          <button ion-button full class="gradient-bt" (click)="step4()"><div class="mask"></div>SKIP QUESTION</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+</ion-content>

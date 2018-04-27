@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="bg">
+    <img src="assets/imgs/bg2.jpg">
+    <p class="title">CUSTOM<br>
+    BOXES</p>
+    <p class="subtitle">Bee Yourself &trade;</p>
+  </div>
+  <div class="container" padding-horizontal>
+    
+    <p>Since we put the MY in MyBeesBox, we figured we'd give our customers the ability to request a from-scratch customized gift box! If you don't see what you need in the pre-curated gift boxes or in the build your own, don't despair! We can work with you to make your dream gift and vision come to life! Feel free to inquire below, and a BeesBox representative will get back to you shortly!</p>
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked>Tell us about your project</ion-label>
+        <ion-textarea placeholder="Describe your project..." [(ngModel)]="project"></ion-textarea>
+      </ion-item>
+    
+    </ion-list>
+
+    <button ion-button full round (click)="saveUserInformation()">SUBMIT</button>
+  </div>
+  
+</ion-content>

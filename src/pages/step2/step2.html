@@ -1,0 +1,35 @@
+<ion-content>
+  <div class="bg">
+    <img src="assets/imgs/bg-step1.jpg">
+    <p class="title">PERSONALIZED<br>
+    ACCOUNT</p>
+    <p class="subtitle">Question 2 of 4</p>
+  </div>
+  <div class="container" padding-horizontal>
+    <h2>What is your RELATIONSHIP STATUS?</h2>
+    <button ion-button full text-center (click)="setStatus(1)">
+      <img class="single" src="assets/imgs/single.png">
+      <label>SINGLE</label> 
+    </button>
+    <button ion-button full text-center (click)="setStatus(2)">
+      <img class="married" src="assets/imgs/married.png">
+      <label>MARRIED</label> 
+    </button>
+    <button ion-button full text-center (click)="setStatus(3)">
+      <img class="relation" src="assets/imgs/relationship.png">
+      <label>IN A RELATIONSHIP</label> 
+    </button>
+
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col class="disclaimer">
+          You can always skip a<br>question or answer it later<br>in your ACCOUNT SETTINGS
+        </ion-col>
+        <ion-col>
+          <button ion-button full class="gradient-bt" (click)="step3()"><div class="mask"></div>SKIP QUESTION</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+</ion-content>

@@ -1,16 +1,28 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" side="right">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <div class="menu-bt" tappable menuToggle>
+        <img src="assets/imgs/menu-bt.jpg">
+      </div>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
+    <div class="user-meta gradient-bt" menuToggle tappable (click)="viewProfile()">
+      <div class="user-name" *ngIf="name && lastname">
+        {{name}} {{lastname}}
+      </div>
+      <div class="view-profile">
+        VIEW MY PROFILE >
+      </div>
+    </div>
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
+    <button ion-button full *ngIf="name" menuToggle class="logout-bt" (click)="logout()">LOG OUT {{name}}</button>
+    <button ion-button full *ngIf="!name" menuToggle (click)="logout()">LOG OUT</button>
   </ion-content>
 
 </ion-menu>

@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="first-block">
+    <img src="assets/imgs/bg-cats.jpg">
+    <div class="first-line">{{firstLine}}</div>
+    <div class="second-line">{{secondLine}}</div>
+    <div class="third-line">Items made just for Him or Her</div>
+  </div>
+  <div class="second-block">
+    <ion-searchbar
+      [(ngModel)]="myInput"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="onInput($event)"
+      (ionCancel)="onCancel($event)">
+    </ion-searchbar>
+    <div padding>
+      <ion-segment mode="ios" [(ngModel)]="filter" (ionChange)="segmentChanged($event)">
+        <ion-segment-button class="gradient-segment" value="new">
+          New
+        </ion-segment-button>
+        <ion-segment-button class="gradient-segment" value="features">
+          Featured
+        </ion-segment-button>
+        <ion-segment-button class="gradient-segment" value="popular">
+          Popular
+        </ion-segment-button>
+        <ion-segment-button class="gradient-segment" value="picks">
+          Staff Picks
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 tappable *ngFor="let p of products" (click)="viewItem(p)">
+        <div class="featured-img-container">
+          <div class="mask"></div>
+          <img [src]="p.imagen">
+        </div>
+        <h2 text-center>{{p.title}}</h2>
+        <p class="ribbon" text-center>
+          <img src="assets/imgs/ribbon.png">
+        </p>
+        <h3 text-center>${{p.price[0]}}</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

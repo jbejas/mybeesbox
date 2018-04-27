@@ -1,0 +1,90 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="bg warm-gradient">
+    <p class="title"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> My Profile</p>
+    <p class="subtitle">{{name}} {{lastname}}</p>
+    <p class="message">EDIT PROFILE</p>
+  </div>
+  <div class="container" padding-horizontal>    
+    <ion-list>
+
+      <ion-item>
+        <ion-label stacked>First Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Last Name</ion-label>
+        <ion-input type="text" [(ngModel)]="lastname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Address</ion-label>
+        <ion-input type="text" [(ngModel)]="address"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>City</ion-label>
+        <ion-input type="text" [(ngModel)]="city"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>State</ion-label>
+        <ion-input type="text" [(ngModel)]="state"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>ZIP Code</ion-label>
+        <ion-input type="text" [(ngModel)]="zip"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Phone Number</ion-label>
+        <ion-input type="text" [(ngModel)]="phone"></ion-input>
+      </ion-item>
+
+      <h2>PERSONALIZED QUESTIONS</h2>
+
+      <ion-segment [(ngModel)]="gender">
+        <ion-segment-button value="1">
+          FEMALE
+        </ion-segment-button>
+        <ion-segment-button value="2">
+          MALE
+        </ion-segment-button>
+        <ion-segment-button value="3">
+          OTHER
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-segment [(ngModel)]="status">
+        <ion-segment-button value="1">
+          SINGLE
+        </ion-segment-button>
+        <ion-segment-button value="2">
+          MARRIED
+        </ion-segment-button>
+        <ion-segment-button value="3">
+          RELATIONSHIP
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-item>
+        <ion-label>Your Bday</ion-label>
+        <ion-datetime [(ngModel)]="my_birthday" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"></ion-datetime>
+      </ion-item>
+
+      <ion-item *ngIf="status!='1'">
+        <ion-label>Partner Bday</ion-label>
+        <ion-datetime [(ngModel)]="partner_birthday" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"></ion-datetime>
+      </ion-item>
+    
+    </ion-list>
+
+    <button ion-button full round (click)="saveUserInformation()">SAVE PROFILE</button>
+
+  </div>
+  
+</ion-content>

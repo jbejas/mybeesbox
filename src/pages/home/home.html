@@ -1,18 +1,47 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="first-block">
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line" *ngIf="name">WELCOME BACK,</div>
+    <div class="first-line" *ngIf="!name">WELCOME BACK!</div>
+    <div class="second-line" *ngIf="name">{{name}}!</div>
+    <div class="third-line">
+      Your hubby’s birthday is<br>
+      in 5 days. Get him a<br>
+      15% off bundle!
+    </div>
+  </div>
+  <div class="second-block" tappable (click)="goTo('precurated')">
+    <div class="block-title">
+      PRE-CURATED BOXES
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line">SHOP PRE-CURATED <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
+  </div>
+  <div class="third-block" tappable (click)="goTo('bundle')">
+    <div class="block-title">
+      BUNDLE ITEMS
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line">SHOP BUNDLE ITEMS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
+  </div>
+  <div class="fifth-block" tappable (click)="goTo('custom')">
+    <div class="block-title">
+      CUSTOMIZED BOXES
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line">CAN'T FIND WHAT<br>YOU WANT? <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
+  </div>
+  <div class="fourth-block gradient-bt">
+    <div class="block-subtitle">
+      Bee assured, we have answers<br>for your questions.
+    </div>
+    <button ion-button full class="button-padding" (click)="faqs()">FREQUENTLY ASKED QUESTIONS</button>
+  </div>
 </ion-content>

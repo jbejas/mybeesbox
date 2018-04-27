@@ -1,0 +1,108 @@
+page-step2 {
+
+    .content-md {
+        .bg {
+            height: 140px;
+        }
+    }
+
+    .content-ios {
+        .bg {
+            height: 120px;
+        }
+    }
+
+    .bg {
+        font-weight: bold;
+        width: 100%;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+
+        p.title {
+            color: #FFF;
+            font-size: 2.2rem;
+            padding-left: 30px;
+            margin: 10px 0 5px 0;
+        }
+
+        p.subtitle {
+            color: #FFF;
+            font-size: 1.2rem;
+            padding-left: 30px;
+            margin: 0;
+        }
+    }
+
+    h2 {
+        color: #000;
+        font-weight: bold;
+        font-size: 1.6rem;
+    }
+
+    .button-inner {
+        flex-direction: column;
+    }
+
+    .container > button {
+        border-radius: 5px !important;
+        font-weight: bold;
+        height: 80px !important;
+        -webkit-box-shadow: 0px 3px 0px 0px rgba(57,117,100,1);
+        -moz-box-shadow: 0px 3px 0px 0px rgba(57,117,100,1);
+        box-shadow: 0px 3px 0px 0px rgba(57,117,100,1);
+        margin-bottom: 10px !important;
+
+        label {
+            margin-top: 5px !important;
+        }
+
+        img.single {
+            width: 13px !important;
+            height: auto !important;
+            margin-top: 5px !important;
+        }
+
+        img.married {
+            width: 27px !important;
+            height: auto !important;
+            margin-top: 5px !important;
+        }
+
+        img.relation {
+            width: 32px !important;
+            height: auto !important;
+            margin-top: 5px !important;
+        }
+    }
+
+    .disclaimer {
+        font-size: 1rem;
+        margin-top: 15px;
+    }
+
+    ion-col > button {
+        margin-top: 10px !important;
+        border-radius: 5px !important;
+        font-weight: bold;
+        color: #000 !important;
+        .button-inner {
+            padding-top: 5px !important;
+            .mask {
+                position: absolute;
+                top: 10.4%;
+                left: 3%;
+                width: 94%;
+                height: 80%;
+                background: #FFF;
+                z-index: -1;
+                display: block;
+            }
+        }
+        
+    }
+}
