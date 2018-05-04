@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, AlertController, LoadingController, Alert } from 'ionic-angular';
+import { NavController, IonicPage, AlertController, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { constants } from '../../environments/environment';
 import { Http } from '@angular/http';
 
 @IonicPage()
@@ -32,8 +31,8 @@ export class CustomPage {
 
   }
 
-  step4() {
-    this.navCtrl.push("Step4Page");
+  goBack() {
+    this.navCtrl.pop();
   }
 
   saveUserInformation() {

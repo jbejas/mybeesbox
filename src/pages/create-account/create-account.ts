@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, AlertController, LoadingController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { constants } from '../../environments/environment';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @IonicPage()
 @Component({
   selector: 'page-create-account',
   templateUrl: 'create-account.html',
-  providers: [ SplashScreen, AngularFireDatabase ]
+  providers: [ SplashScreen, AngularFireDatabase, OneSignal ]
 })
 export class CreateAccountPage {
 
@@ -25,7 +25,8 @@ export class CreateAccountPage {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private http: Http,
-    public db: AngularFireDatabase
+    public db: AngularFireDatabase,
+    private oneSignal: OneSignal
   ) {
 
   }
@@ -91,12 +92,25 @@ export class CreateAccountPage {
             uid: result.user_id,
             email: this.email
           }).then(() => {
-            loading.dismiss().then(() => {
               window.localStorage.setItem('mbb-email', this.email);
               window.localStorage.setItem('mbb-pass', this.password);
-              this.navCtrl.push('Step1Page');
+              this.oneSignal.startInit('4e60e773-888b-46b2-8377-44f8c2151a71', '572716651774');
+              this.oneSignal.getIds().then( ids => {
+                window.localStorage.setItem("mbb-onesignal",ids.userId);
+                console.log('UserID: ' + ids.userId);
+                if(window.localStorage.getItem('mbb-uid')) {
+                  let user_id = window.localStorage.getItem('mbb-uid');
+                  this.db.object('users/' + user_id).update({
+                    onesignal: ids.userId
+                  })
+                }
+              });
+              this.oneSignal.endInit().then(() => {
+                loading.dismiss().then(() => {
+                  this.navCtrl.push('Step1Page');
+                });
+              });
             });
-          });
         } else {
           loading.dismiss().then(() => {
             let alert = this.alertCtrl.create({

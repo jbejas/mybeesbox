@@ -15,6 +15,10 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
+// PRODUCTION MODE
+import { enableProdMode } from '@angular/core';
+enableProdMode();
+
 @NgModule({
   declarations: [
     MyApp

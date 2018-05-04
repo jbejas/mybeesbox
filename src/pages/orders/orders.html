@@ -1,0 +1,23 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="bg">
+    <p class="back" tappable (click)="goBack()"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> BACK</p>
+    <div class="user-name" *ngIf="name && lastname">
+      {{name}} {{lastname}}
+    </div>
+  </div>
+  <div padding>
+      <h3>YOUR ORDER HISTORY</h3>
+      <ion-list *ngIf="show">
+        <ion-item *ngFor="let order of orders | orderBy:'id':'desc'">
+          <h2>Order #{{order.id}}</h2>
+          <p>Order created: {{order.created_at}}</p>
+          <p>Order total: ${{order.total}} ({{order.currency}})</p>
+          <button ion-button item-end (click)="viewOrder(order)">VIEW</button>
+        </ion-item>
+      </ion-list>
+  </div>
+  
+</ion-content>

@@ -21,8 +21,12 @@ export class PreCuratedPage {
     this.category = this.params.data.category;
   }
 
-  openCategory() {
-    this.navCtrl.push('CategoryPage', { first: this.firstLine, second: this.secondLine, category: this.category });
+  openCategory(i) {
+    this.navCtrl.push('CategoryPage', { first: this.firstLine, second: this.secondLine, category: this.category, subcategory: i });
+  }
+
+  goBack() {
+    this.navCtrl.pop();
   }
 
 }

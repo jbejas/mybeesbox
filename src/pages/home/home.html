@@ -8,11 +8,7 @@
     <div class="first-line" *ngIf="name">WELCOME BACK,</div>
     <div class="first-line" *ngIf="!name">WELCOME BACK!</div>
     <div class="second-line" *ngIf="name">{{name}}!</div>
-    <div class="third-line">
-      Your hubby’s birthday is<br>
-      in 5 days. Get him a<br>
-      15% off bundle!
-    </div>
+    <div class="third-line" *ngIf="notification">{{notification}}</div>
   </div>
   <div class="second-block" tappable (click)="goTo('precurated')">
     <div class="block-title">

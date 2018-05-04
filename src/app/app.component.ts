@@ -1,10 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Events } from 'ionic-angular';
+import { Nav, Platform, Events, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
+import { OneSignal } from '@ionic-native/onesignal';
+import { AngularFireDatabase } from 'angularfire2/database';
 //import { SplashScreen } from '@ionic-native/splash-screen';
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [ OneSignal, AngularFireDatabase ]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -17,7 +20,10 @@ export class MyApp {
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
-    public events: Events
+    public events: Events,
+    private oneSignal: OneSignal,
+    public alertCtrl: AlertController,
+    public db: AngularFireDatabase
   ) {
 
     this.initializeApp();
@@ -28,6 +34,7 @@ export class MyApp {
       { title: 'SHOP PRE-CURATED', component: "PreCuratedPage", first: 'PRE-CURATED', second: 'BOXES', category: 'precurated' },
       { title: 'SHOP BUNDLE ITEMS', component: "PreCuratedPage", first: 'BUNDLE', second: 'BOXES', category: 'beesbundle' },
       { title: "CAN'T FIND WHAT YOU WANT?" , component: "CustomPage", first: null, second: null, category: null },
+      { title: "MY ORDERS" , component: "OrdersPage", first: null, second: null, category: null },
       { title: "MY CART" , component: "CartPage", first: null, second: null, category: null },
     ];
 
@@ -56,6 +63,37 @@ export class MyApp {
         this.name = window.localStorage.getItem('mbb-name');
         this.lastname = window.localStorage.getItem('mbb-lastname');
       }
+
+      this.oneSignal.startInit('4e60e773-888b-46b2-8377-44f8c2151a71', '572716651774');
+
+      this.oneSignal.getIds().then( ids => {
+        window.localStorage.setItem("mbb-onesignal",ids.userId);
+        console.log('UserID: ' + ids.userId);
+        if(window.localStorage.getItem('mbb-uid')) {
+          let user_id = window.localStorage.getItem('mbb-uid');
+          this.db.object('users/' + user_id).update({
+            onesignal: ids.userId
+          })
+        }
+      });
+
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+
+      this.oneSignal.handleNotificationReceived().subscribe(data => {
+        console.log('Notificación Recibida',data);
+        let alert = this.alertCtrl.create({
+          title: data.payload.title,
+          message: data.payload.body,
+          buttons: ['OK']
+        });
+        alert.present();
+      });
+
+      this.oneSignal.handleNotificationOpened().subscribe(data => {
+        console.log('Push Notification Open',data);
+      });
+
+      this.oneSignal.endInit();
       
     });
   }
@@ -81,12 +119,22 @@ export class MyApp {
     window.localStorage.removeItem('mbb-gender');
     window.localStorage.removeItem('mbb-status');
     window.localStorage.removeItem('mbb-cart');
+    window.localStorage.removeItem('mbb-onesignal');
     this.nav.setRoot('LoginPage');
   }
 
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component, { first: page.first, second: page.second, category: page.category });
+    if(page.component == 'HomePage') {
+      this.nav.setRoot(page.component, { first: page.first, second: page.second, category: page.category });
+    } else {
+      this.nav.push(page.component, { first: page.first, second: page.second, category: page.category });
+    }
   }
+
+  viewCart() {
+    this.nav.push('CartPage');
+  }
+
 }

@@ -4,29 +4,57 @@
   </div>
   <div class="bg">
     <img src="assets/imgs/bg2.jpg">
-    <p class="title"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Keep Shopping</p>
+    <p class="title" tappable (click)="goBack()"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> Keep Shopping</p>
     <p class="subtitle">CART <ion-icon ios="ios-cart-outline" md="md-cart"></ion-icon></p>
+  </div>
+  <div class="empty" *ngIf="products==0">
+    <h2 text-center class="empty">Your Cart is empty.</h2>
+  </div>
+  <div class="second-block" tappable (click)="goTo('precurated')" *ngIf="products==0">
+    <div class="block-title">
+      PRE-CURATED BOXES
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line">SHOP PRE-CURATED <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
+  </div>
+  <div class="third-block" tappable (click)="goTo('bundle')" *ngIf="products==0">
+    <div class="block-title">
+      BUNDLE ITEMS
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line">SHOP BUNDLE ITEMS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
+  </div>
+  <div class="fifth-block" tappable (click)="goTo('custom')" *ngIf="products==0">
+    <div class="block-title">
+      CUSTOMIZED BOXES
+    </div>
+    <div class="mask"></div>
+    <div class="image-bg"></div>
+    <div class="first-line">CAN'T FIND WHAT<br>YOU WANT? <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
+  </div>
+  <div class="fourth-block gradient-bt" *ngIf="products==0">
+    <div class="block-subtitle">
+      Bee assured, we have answers<br>for your questions.
+    </div>
+    <button ion-button full class="button-padding" (click)="faqs()">FREQUENTLY ASKED QUESTIONS</button>
   </div>
   <div class="product" *ngFor="let product of products; let i = index;">
     <ion-grid>
       <ion-row>
-        <ion-col col-9>
-          <h1>{{product.title}}</h1>
+        <ion-col col-4>
+          <img class="product-image" [src]="product.imagen">
         </ion-col>
-        <ion-col col-3 text-right>
-          <button ion-button full color="light" round (click)="removeItem(i)">REMOVE</button>
+        <ion-col col-8>
+          <h3>{{product.title}}</h3>
+          <span class="price">Price: ${{product.price[0]}}</span><br>
+          <button class="removeButton" ion-button full small color="light" round (click)="removeItem(i)">REMOVE ITEM</button>
         </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col><img class="product-image" [src]="product.imagen"></ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="price">Price:</ion-col>
-        <ion-col text-right class="price">${{product.price[0]}}</ion-col>
       </ion-row>
     </ion-grid>
   </div>
-  <ion-grid>
+  <!--<ion-grid>
     <ion-row>
       <ion-col class="cart-meta">Shipping:</ion-col>
       <ion-col text-right class="price">$6.00</ion-col>
@@ -35,15 +63,15 @@
       <ion-col class="cart-meta">Tax:</ion-col>
       <ion-col text-right class="price">$6.00</ion-col>
     </ion-row>
-  </ion-grid>
-  <hr>
-  <ion-grid>
+  </ion-grid>-->
+  <hr *ngIf="products!=0">
+  <ion-grid *ngIf="products!=0">
     <ion-row>
-      <ion-col class="price">Total:</ion-col>
+      <ion-col class="price">Sub-Total:</ion-col>
       <ion-col text-right class="price">${{total}}</ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid>
+  <!--<ion-grid>
     <ion-row>
       <ion-col col-8>
         <ion-input placeholder="Promo Code" type="text" [(ngModel)]="code"></ion-input>
@@ -52,8 +80,8 @@
         <button ion-button full class="gradient-bt" (click)="step2()"><div class="mask"></div>APPLY CODE</button>
       </ion-col>
     </ion-row>
-  </ion-grid>
-  <div padding>
+  </ion-grid>-->
+  <div padding *ngIf="products!=0">
     <button ion-button full round class="gradient-bt" (click)="completeOrder()">COMPLETE ORDER</button>
   </div>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, LoadingController, AlertController, Alert } from 'ionic-angular';
+import { NavController, IonicPage, LoadingController, AlertController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Http } from '@angular/http';
 

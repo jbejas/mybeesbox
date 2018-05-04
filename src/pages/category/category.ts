@@ -12,9 +12,13 @@ export class CategoryPage {
 
   public filter: string;
   public products: any;
+  public allproducts: any;
   public firstLine: string;
   public secondLine: string;
   public category: string;
+  public subcategory: string;
+  public show: boolean = false;
+  public searchTerm: string = '';
 
   constructor(
     public navCtrl: NavController,
@@ -26,6 +30,8 @@ export class CategoryPage {
     this.firstLine = this.params.data.first;
     this.secondLine = this.params.data.second;
     this.category = this.params.data.category;
+    this.subcategory = this.params.data.subcategory;
+    console.log('Subcategory -> ' + this.subcategory);
   }
 
   viewItem(item) {
@@ -33,17 +39,30 @@ export class CategoryPage {
   }
 
   ionViewDidLoad() {
-    this.products = [];
     this.db.list('products', ref => ref.orderByChild('category/slug').equalTo(this.category)).snapshotChanges().subscribe(products => {
-      products.forEach(product => {
+      this.products = [];
+      products.forEach(product => { 
         this.products.push(product.payload.val());
       });
-      console.log('Products', this.products);
-    })
+      this.show = true;
+      this.allproducts = this.products;
+      console.log('Products',this.products);
+    });
   }
 
-  segmentChanged(s) {
-    console.log('Segment -> ' + s);
+  setFilteredItems() {
+    console.log('Search Term -> ' + this.searchTerm);
+    this.allproducts = [];
+    return this.products.filter((item) => {
+      if(item.title.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1) {
+        console.log('Item',item.title);
+        this.allproducts.push(item);
+      }
+    });
+  }
+
+  goBack() {
+    this.navCtrl.pop();
   }
 
 }

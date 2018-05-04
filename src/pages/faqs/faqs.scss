@@ -17,13 +17,25 @@ page-faqs {
 
     .content-md {
         .bg {
-            height: 120px;
+            height: 95px;
+            p.title {
+                color: #FFF;
+                font-size: 2.2rem;
+                padding-left: 30px;
+                margin: 50px 0 5px 0;
+            }
         }
     }
 
     .content-ios {
         .bg {
             height: 110px;
+            p.title {
+                color: #FFF;
+                font-size: 2.2rem;
+                padding-left: 30px;
+                margin: 35px 0 5px 0;
+            }
         }
     }
 
@@ -38,19 +50,13 @@ page-faqs {
             z-index: -1;
         }
 
-        p.title {
-            color: #FFF;
-            font-size: 2.2rem;
-            padding-left: 30px;
-            margin: 35px 0 5px 0;
-        }
-
         p.subtitle {
             color: #FFF;
             font-size: 1.2rem;
             padding-left: 30px;
             margin: 0;
         }
+
     }
 
     h2 {

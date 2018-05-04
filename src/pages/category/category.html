@@ -3,6 +3,7 @@
     <img src="assets/imgs/menu-bt.jpg">
   </div>
   <div class="first-block">
+    <p class="back" tappable (click)="goBack()"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> BACK</p>
     <img src="assets/imgs/bg-cats.jpg">
     <div class="first-line">{{firstLine}}</div>
     <div class="second-line">{{secondLine}}</div>
@@ -10,17 +11,17 @@
   </div>
   <div class="second-block">
     <ion-searchbar
-      [(ngModel)]="myInput"
       [showCancelButton]="shouldShowCancel"
-      (ionInput)="onInput($event)"
-      (ionCancel)="onCancel($event)">
+      (ionCancel)="onCancel($event)"
+      [(ngModel)]="searchTerm"
+      (ionInput)="setFilteredItems()">
     </ion-searchbar>
     <div padding>
-      <ion-segment mode="ios" [(ngModel)]="filter" (ionChange)="segmentChanged($event)">
+      <ion-segment mode="ios" [(ngModel)]="filter">
         <ion-segment-button class="gradient-segment" value="new">
           New
         </ion-segment-button>
-        <ion-segment-button class="gradient-segment" value="features">
+        <ion-segment-button class="gradient-segment" value="featured">
           Featured
         </ion-segment-button>
         <ion-segment-button class="gradient-segment" value="popular">
@@ -33,8 +34,21 @@
     </div>
   </div>
   <ion-grid>
-    <ion-row>
-      <ion-col col-6 tappable *ngFor="let p of products" (click)="viewItem(p)">
+    <ion-row *ngIf="show && subcategory != 'under50'">
+      <ion-col col-6 tappable *ngFor="let p of allproducts | orderBy:'title':'asc'" [hidden]="p.status!='publish' || p.subcategory!=subcategory || p.filter!=filter" (click)="viewItem(p)">
+        <div class="featured-img-container">
+          <div class="mask"></div>
+          <img [src]="p.imagen">
+        </div>
+        <h2 text-center>{{p.title}}</h2>
+        <p class="ribbon" text-center>
+          <img src="assets/imgs/ribbon.png">
+        </p>
+        <h3 text-center>${{p.price[0]}}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="show && subcategory == 'under50'">
+      <ion-col col-6 tappable *ngFor="let p of allproducts | orderBy:'title':'asc'" [hidden]="p.status!='publish' || p.filter!=filter || p.price[0] > 50" (click)="viewItem(p)">
         <div class="featured-img-container">
           <div class="mask"></div>
           <img [src]="p.imagen">

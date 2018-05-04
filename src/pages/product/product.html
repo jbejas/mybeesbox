@@ -19,8 +19,20 @@
           <h2>${{product.price[0]}}</h2>
         </ion-col>
       </ion-row>
+      <ion-row *ngIf="product.vars">
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label stacked>{{product.attribute}}</ion-label>
+              <ion-select [(ngModel)]="variation">
+                <ion-option *ngFor="let a of product.vars;" value="{{a.atkey}}|{{a.atvalue}}|{{a.id}}|{{a.name}}">{{a.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
       <ion-row>
-        <ion-col>{{product.description}}</ion-col>
+        <ion-col [innerHTML]="product.description"></ion-col>
       </ion-row>
       <ion-row>
         <ion-col text-left>

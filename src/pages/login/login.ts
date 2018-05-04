@@ -4,18 +4,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { constants } from '../../environments/environment';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [ SplashScreen, AngularFireDatabase ]
+  providers: [ SplashScreen, AngularFireDatabase, OneSignal ]
 })
 export class LoginPage {
 
   private email: string = '';
   private password: string = '';
-  private password1: string = '';
   private flag: number = 0;
   public message: string;
 
@@ -26,7 +26,8 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     private http: Http,
     public db: AngularFireDatabase,
-    public events: Events
+    public events: Events,
+    private oneSignal: OneSignal
   ) {
     
   }
@@ -90,8 +91,22 @@ export class LoginPage {
           window.localStorage.setItem('mbb-gender',result.gender);
           window.localStorage.setItem('mbb-status',result.status);
           this.events.publish('user:login');
-          loading.dismiss().then(() => {
-            this.navCtrl.push('HomePage');
+
+          this.oneSignal.startInit('4e60e773-888b-46b2-8377-44f8c2151a71', '572716651774');
+          this.oneSignal.getIds().then( ids => {
+            window.localStorage.setItem("mbb-onesignal",ids.userId);
+            console.log('UserID: ' + ids.userId);
+            if(window.localStorage.getItem('mbb-uid')) {
+              let user_id = window.localStorage.getItem('mbb-uid');
+              this.db.object('users/' + user_id).update({
+                onesignal: ids.userId
+              })
+            }
+          });
+          this.oneSignal.endInit().then(() => {
+            loading.dismiss().then(() => {
+              this.navCtrl.push('HomePage');
+            });
           });
         } else {
           loading.dismiss().then(() => {

@@ -23,4 +23,8 @@ export class FaqsPage {
     })
   }
 
+  goBack() {
+    this.navCtrl.pop();
+  }
+
 }

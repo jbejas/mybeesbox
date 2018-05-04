@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, AlertController, LoadingController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { constants } from '../../environments/environment';
 import { Http } from '@angular/http';
 
 @IonicPage()

@@ -3,6 +3,7 @@
     <img src="assets/imgs/menu-bt.jpg">
   </div>
   <div class="first-block">
+    <p class="back" tappable (click)="goBack()"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> BACK</p>
     <div class="mask"></div>
     <img src="assets/imgs/pre-curated.jpg">
     <div class="first-line">{{firstLine}}</div>
@@ -14,22 +15,22 @@
       BROWSE BY CATEGORY
     </div>
     <ion-list>
-      <button ion-item (click)="openCategory(p)">
+      <button ion-item (click)="openCategory('his')">
         HIS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>
-      <button ion-item (click)="openCategory(p)">
+      <button ion-item (click)="openCategory('hers')">
         HERS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>
-      <button ion-item (click)="openCategory(p)">
+      <button ion-item (click)="openCategory('birthdays')">
         BIRTHDAYS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>
-      <button ion-item (click)="openCategory(p)">
+      <button ion-item (click)="openCategory('wedding')">
         WEDDING <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>
-      <button ion-item (click)="openCategory(p)">
+      <button ion-item (click)="openCategory('school')">
         BACK TO SCHOOL <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>
-      <button ion-item (click)="openCategory(p)">
+      <button ion-item (click)="openCategory('under50')">
         UNDER $50 <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>
     </ion-list>

@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="menu-bt" tappable menuToggle>
+    <img src="assets/imgs/menu-bt.jpg">
+  </div>
+  <div class="bg">
+    <p class="back" tappable (click)="goBack()"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon> BACK</p>
+    <div class="user-name">
+      ORDER # {{order.id}}
+    </div>
+    <p class="status">{{order.status}}</p>
+  </div>
+  <div padding>
+      <h3>YOUR ORDER DETAIL</h3>
+      <ion-list>
+        <ion-item *ngFor="let i of order.line_items">
+          <ion-thumbnail item-start>
+            <img [src]="i.product_thumbnail_url">
+          </ion-thumbnail>
+          <h2>{{i.name}}</h2>
+          <p><strong>Price:</strong> ${{i.price}} ({{order.currency}})</p>
+          <p><strong>Tax:</strong> ${{i.total_tax}} ({{order.currency}})</p>
+        </ion-item>
+      </ion-list>
+      <p><strong>Payment:</strong> {{order.payment_details.method_title}}</p>
+      <p><strong>Paid at:</strong> {{order.payment_details.paid_at}}</p>
+      <h4>Shipped at</h4>
+      <p>{{order.shipping_address.address_1}}, {{order.shipping_address.city}}, {{order.shipping_address.state}}, {{order.shipping_address.postcode}}, {{order.shipping_address.country}}</p>
+      <h4>Shipping Method</h4>
+      <p *ngFor="let s of order.shipping_lines">{{s.method_title}} ${{s.total}} ({{order.currency}})</p>
+      <p>Shipping Tax: ${{order.shipping_tax}} ({{order.currency}})</p>
+      <p>Shipping Total: ${{order.total_shipping}} ({{order.currency}})</p>
+      <p>Total Discount: ${{order.total_discount}} ({{order.currency}})</p>
+      <h3>ORDER TOTAL: ${{order.total}} (Tax: ${{order.total_tax}})</h3>
+  </div>
+  
+</ion-content>
