@@ -65,4 +65,8 @@ export class CategoryPage {
     this.navCtrl.pop();
   }
 
+  viewCart() {
+    this.navCtrl.push('CartPage');
+  }
+
 }

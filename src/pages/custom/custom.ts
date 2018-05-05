@@ -130,4 +130,8 @@ export class CustomPage {
     }
   }
 
+  viewCart() {
+    this.navCtrl.push('CartPage');
+  }
+
 }

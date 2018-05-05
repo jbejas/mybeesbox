@@ -18,6 +18,7 @@ export class CreateAccountPage {
   private password1: string = '';
   private flag: number = 0;
   public message: string;
+  public updates: boolean = true;
 
   constructor(
     public navCtrl: NavController,
@@ -90,7 +91,8 @@ export class CreateAccountPage {
           window.localStorage.setItem('mbb-uid',result.user_id);
           this.db.object('users/' + result.user_id).set({
             uid: result.user_id,
-            email: this.email
+            email: this.email,
+            updates: this.updates
           }).then(() => {
               window.localStorage.setItem('mbb-email', this.email);
               window.localStorage.setItem('mbb-pass', this.password);

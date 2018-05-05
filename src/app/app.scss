@@ -55,6 +55,11 @@ ion-content, ion-header {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c1c1d6', endColorstr='#7bbfad',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+.palmtree {
+    background: url('../assets/imgs/bg-teal.svg') center center no-repeat;
+    background-size: cover;
+}
+
 .warm-gradient {
     background: #f2d7b1; /* Old browsers */
     background: -moz-linear-gradient(-45deg, #f2d7b1 0%, #e0afa9 100%); /* FF3.6-15 */
@@ -120,6 +125,7 @@ ion-menu .user-meta {
     width: 100%;
     height: 150px;
     padding: 50px 20px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
 }
 
 ion-menu .user-name {
@@ -129,6 +135,7 @@ ion-menu .user-name {
     text-align: right;
     margin-bottom: 0;
     text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
 }
 
 ion-menu .view-profile {

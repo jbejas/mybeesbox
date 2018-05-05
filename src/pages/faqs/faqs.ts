@@ -27,4 +27,8 @@ export class FaqsPage {
     this.navCtrl.pop();
   }
 
+  viewCart() {
+    this.navCtrl.push('CartPage');
+  }
+
 }

@@ -29,4 +29,8 @@ export class PreCuratedPage {
     this.navCtrl.pop();
   }
 
+  viewCart() {
+    this.navCtrl.push('CartPage');
+  }
+
 }

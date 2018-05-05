@@ -116,4 +116,8 @@ export class ProfilePage {
     });
   }
 
+  viewCart() {
+    this.navCtrl.push('CartPage');
+  }
+
 }

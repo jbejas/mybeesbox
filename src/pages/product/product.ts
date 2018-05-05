@@ -56,4 +56,8 @@ export class ProductPage {
     this.navCtrl.pop();
   }
 
+  viewCart() {
+    this.navCtrl.push('CartPage');
+  }
+
 }

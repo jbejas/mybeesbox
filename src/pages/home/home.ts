@@ -159,4 +159,8 @@ export class HomePage {
     this.navCtrl.push('FaqsPage');
   }
 
+  viewCart() {
+    this.navCtrl.push('CartPage');
+  }
+
 }
