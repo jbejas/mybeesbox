@@ -120,4 +120,8 @@ export class ProfilePage {
     this.navCtrl.push('CartPage');
   }
 
+  goBack() {
+    this.navCtrl.pop();
+  }
+
 }
