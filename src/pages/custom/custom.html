@@ -20,12 +20,12 @@
 
       <ion-item>
         <ion-label stacked>Tell us about your project</ion-label>
-        <ion-textarea placeholder="Describe your project..." [(ngModel)]="project"></ion-textarea>
+        <ion-textarea placeholder="Describe your project..." [(ngModel)]="message"></ion-textarea>
       </ion-item>
     
     </ion-list>
 
-    <button ion-button full round (click)="saveUserInformation()">SUBMIT</button>
+    <button ion-button full round (click)="sendProject()">SUBMIT</button>
   </div>
   
 </ion-content>

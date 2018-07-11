@@ -107,10 +107,10 @@ export class CreateAccountPage {
                   })
                 }
               });
-              this.oneSignal.endInit().then(() => {
-                loading.dismiss().then(() => {
-                  this.navCtrl.push('Step1Page');
-                });
+              this.oneSignal.endInit();
+
+              loading.dismiss().then(() => {
+                this.navCtrl.push('Step1Page');
               });
             });
         } else {
@@ -123,6 +123,14 @@ export class CreateAccountPage {
             alert.present();
           });
         }
+      }, error => {
+        loading.dismiss();
+        let alert = this.alertCtrl.create({
+          title: "Error",
+          message: "An error occured while trying to process your registration. Please try again.",
+          buttons: ["OK"]
+        });
+        alert.present();
       });
     }
     

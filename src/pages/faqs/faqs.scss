@@ -1,5 +1,9 @@
 page-faqs {
 
+    .list > .item-block:first-child {
+        border: none !important;
+    }
+
     .menu-bt {
         position: absolute;
         right: 0;
@@ -15,28 +19,13 @@ page-faqs {
         }
     }
 
-    .cart-bt {
-        position: absolute;
-        right: 15%;
-        z-index: 100;
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        font-size: 2rem;
-        ion-icon {
-            padding-top: 15px;
-            width: 100%;
-            height: auto;
-        }
-    }
-
     .content-md {
         .bg {
             height: 95px;
             p.title {
                 color: #FFF;
                 font-size: 2.2rem;
-                padding-left: 30px;
+                padding-left: 20px;
                 margin: 50px 0 5px 0;
             }
         }
@@ -44,11 +33,11 @@ page-faqs {
 
     .content-ios {
         .bg {
-            height: 110px;
+            height: 90px;
             p.title {
                 color: #FFF;
                 font-size: 2.2rem;
-                padding-left: 30px;
+                padding-left: 20px;
                 margin: 35px 0 5px 0;
             }
         }

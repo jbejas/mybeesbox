@@ -103,11 +103,12 @@ export class LoginPage {
               })
             }
           });
-          this.oneSignal.endInit().then(() => {
-            loading.dismiss().then(() => {
-              this.navCtrl.push('HomePage');
-            });
+          this.oneSignal.endInit();
+
+          loading.dismiss().then(() => {
+            this.navCtrl.push('HomePage');
           });
+
         } else {
           loading.dismiss().then(() => {
             let alert = this.alertCtrl.create({
@@ -118,7 +119,16 @@ export class LoginPage {
             alert.present();
           });
         }
+      }, error => {
+        loading.dismiss();
+        let alert = this.alertCtrl.create({
+          title: "Error",
+          message: "An error occured while trying to login. Please try again.",
+          buttons: ["OK"]
+        });
+        alert.present();
       });
+      
     }
     
   }

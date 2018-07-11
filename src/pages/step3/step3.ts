@@ -112,9 +112,8 @@ export class Step3Page {
             window.localStorage.setItem('mbb-state',this.state);
             window.localStorage.setItem('mbb-zip',this.zip);
             window.localStorage.setItem('mbb-phone',this.phone);
-            loading.dismiss().then(() => {
-              this.navCtrl.push('Step4Page');
-            });
+            loading.dismiss();
+            this.navCtrl.push('Step4Page');
           });
         } else {
           loading.dismiss().then(() => {

@@ -83,6 +83,7 @@
         <preference name="CodePushDeploymentKey" value="Hc3hRTVSMnUFTTFtjyC6kuFsRyNX92448b4a-f6ab-4180-99a8-4b7b2e19939e" />
     </platform>
     <engine name="android" spec="6.3.0" />
+    <engine name="ios" spec="4.5.4" />
     <plugin name="cordova-plugin-device" spec="^2.0.1" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />

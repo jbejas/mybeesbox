@@ -25,6 +25,11 @@ export class ProfilePage {
   private partner_birthday: string;
   private flag: number = 0;
   public message: string;
+  public special_dates: any = [];
+  public date_type: string;
+  public date_name: string;
+  public date_date: string;
+  public show_dates: boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -47,6 +52,9 @@ export class ProfilePage {
     this.gender = window.localStorage.getItem('mbb-gender');
     this.my_birthday = window.localStorage.getItem('mbb-mybday');
     this.partner_birthday = window.localStorage.getItem('mbb-partnerbday');
+    if(window.localStorage.getItem('mbb-special-dates')) {
+      this.special_dates = JSON.parse(window.localStorage.getItem('mbb-special-dates'));
+    }
   }
 
   saveUserInformation() {
@@ -71,6 +79,7 @@ export class ProfilePage {
     .subscribe(data => {
       let result = JSON.parse(data.text());
       if(result.result) {
+        var special_dates = JSON.stringify(this.special_dates);
         this.db.object('users/' + this.uid).update({
           gender: this.gender,
           name: this.name,
@@ -81,7 +90,8 @@ export class ProfilePage {
           phone: this.phone,
           status: this.status,
           my_birthday: this.my_birthday,
-          partner_birthday: this.partner_birthday
+          partner_birthday: this.partner_birthday,
+          special_dates: special_dates
         }).then(() => {
           window.localStorage.setItem('mbb-name',this.name);
           window.localStorage.setItem('mbb-lastname',this.lastname);
@@ -94,6 +104,7 @@ export class ProfilePage {
           window.localStorage.setItem('mbb-partnerbday',this.partner_birthday);
           window.localStorage.setItem('mbb-gender',this.gender);
           window.localStorage.setItem('mbb-status',this.status);
+          window.localStorage.setItem('mbb-special-dates',special_dates)
           this.events.publish('user:login');
           loading.dismiss().then(() => {
             let toast = this.toast.create({
@@ -114,6 +125,29 @@ export class ProfilePage {
         });
       }
     });
+  }
+
+  addDate() {
+    var fdate = this.date_date.split('-');
+    this.special_dates.push({
+      tdate: this.date_type,
+      name: this.date_name,
+      date_date: this.date_date,
+      formatted_date: fdate[2] + "/" + fdate[1] + "/" + fdate[0]
+    });
+    this.date_date = '';
+    this.date_name = '';
+    this.date_type = '';
+    this.saveUserInformation();
+  }
+
+  removeSpecialDate(i) {
+    this.special_dates.splice(i, 1);
+    this.saveUserInformation();
+  }
+
+  showDates() {
+    this.show_dates = true;
   }
 
   viewCart() {

@@ -37,7 +37,7 @@
     </div>
   </div>
   <ion-grid>
-    <ion-row *ngIf="show && subcategory != 'under50'">
+    <ion-row *ngIf="show && subcategory != 'under50' && subcategory != 'all'">
       <ion-col col-6 tappable *ngFor="let p of allproducts | orderBy:'title':'asc'" [hidden]="p.status!='publish' || p.subcategory!=subcategory || p.filter!=filter" (click)="viewItem(p)">
         <div class="featured-img-container">
           <div class="mask"></div>
@@ -52,6 +52,19 @@
     </ion-row>
     <ion-row *ngIf="show && subcategory == 'under50'">
       <ion-col col-6 tappable *ngFor="let p of allproducts | orderBy:'title':'asc'" [hidden]="p.status!='publish' || p.filter!=filter || p.price[0] > 50" (click)="viewItem(p)">
+        <div class="featured-img-container">
+          <div class="mask"></div>
+          <img [src]="p.imagen">
+        </div>
+        <h2 text-center>{{p.title}}</h2>
+        <p class="ribbon" text-center>
+          <img src="assets/imgs/ribbon.png">
+        </p>
+        <h3 text-center>${{p.price[0]}}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="show && subcategory == 'all'">
+      <ion-col col-6 tappable *ngFor="let p of allproducts | orderBy:'title':'asc'" [hidden]="p.status!='publish'" (click)="viewItem(p)">
         <div class="featured-img-container">
           <div class="mask"></div>
           <img [src]="p.imagen">

@@ -22,6 +22,7 @@ export class HomePage {
   public notification_all: string;
   public notification: string;
   public config: any;
+  public special_dates: any = [];
 
   constructor(
     public navCtrl: NavController,
@@ -35,6 +36,9 @@ export class HomePage {
     this.name = window.localStorage.getItem('mbb-name');
     this.order = this.params.data.order;
     this.oid = this.params.data.oid;
+    if(window.localStorage.getItem('mbb-special-dates')) {
+      this.special_dates = JSON.parse(window.localStorage.getItem('mbb-special-dates'));
+    }
   }
 
   ionViewDidLoad() {
@@ -71,7 +75,7 @@ export class HomePage {
       this.codePush.sync({ updateDialog: {
         updateTitle: "Update Available!",
         mandatoryUpdateMessage: "My Bees Box will update now.",
-        mandatoryContinueButtonLabel: "Installl Update"
+        mandatoryContinueButtonLabel: "Install Update"
       } }, downloadProgress).subscribe(
         (syncStatus) => {
           console.log('Sync Status -> ' + syncStatus);
@@ -139,7 +143,30 @@ export class HomePage {
       if(config[1] == 3) {
         this.notification = config[0].toString();
       }
-    })
+    });
+
+    setTimeout(() => {
+      this.special_dates.forEach(sdate => {
+        console.log('Special Dates',sdate);
+        var start = moment();
+        var end = moment(sdate.date_date);
+        var diff = end.diff(start, "days");
+
+        console.log('Diff -> ' + diff);
+
+        if(diff > 0 && diff <= 7) {
+          if(sdate.tdate == "Anniversary") {
+            this.notification = "Your Anniversary with " + sdate.name + " is in " + diff + " days. Don't forget your present!";
+          }
+          if(sdate.tdate == "Birthday") {
+            this.notification = sdate.name + " Birthday is in " + diff + " days. Don't forget your present!";
+          }
+          console.log("Notification -> " + this.notification);
+        }
+
+      });
+    }, 1500);
+      
 
   }
 

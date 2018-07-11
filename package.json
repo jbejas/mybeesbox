@@ -32,6 +32,7 @@
     "angularfire2": "^5.0.0-rc.6.0",
     "code-push": "^2.0.4",
     "cordova-android": "6.3.0",
+    "cordova-ios": "4.5.4",
     "cordova-plugin-code-push": "^1.11.10",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.1",
@@ -73,7 +74,8 @@
       "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }

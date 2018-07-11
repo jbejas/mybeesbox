@@ -17,9 +17,9 @@
     
     </ion-list>
 
-    <h2>When is your PARTNER'S BIRTHDAY?</h2>
+    <h2 *ngIf="status!=1">When is your PARTNER'S BIRTHDAY?</h2>
     
-    <ion-list>
+    <ion-list *ngIf="status!=1">
 
       <ion-item>
         <ion-label>Select date</ion-label>

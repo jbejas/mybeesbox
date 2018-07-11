@@ -15,6 +15,7 @@ export class Step4Page {
   private partner_birthday: string = '';
   private flag: number = 0;
   public message: string;
+  public status: any;
 
   constructor(
     public navCtrl: NavController,
@@ -23,7 +24,10 @@ export class Step4Page {
     public loadingCtrl: LoadingController,
     private http: Http
   ) {
-
+    this.status = window.localStorage.getItem('mbb-status');
+    if(this.status == '1') {
+      this.partner_birthday = '0';
+    }
   }
 
   home() {

@@ -8,8 +8,8 @@
   <div class="first-block">
     <div class="mask"></div>
     <div class="image-bg"></div>
-    <div class="first-line" *ngIf="name">WELCOME BACK,</div>
-    <div class="first-line" *ngIf="!name">WELCOME BACK!</div>
+    <div class="first-line" *ngIf="name">WELCOME,</div>
+    <div class="first-line" *ngIf="!name">WELCOME!</div>
     <div class="second-line" *ngIf="name">{{name}}!</div>
     <div class="third-line" *ngIf="notification">{{notification}}</div>
   </div>
@@ -23,11 +23,11 @@
   </div>
   <div class="third-block" tappable (click)="goTo('bundle')">
     <div class="block-title">
-      BUNDLE ITEMS
+      BUILD YOUR OWN GIFT
     </div>
     <div class="mask"></div>
     <div class="image-bg"></div>
-    <div class="first-line">SHOP BUNDLE ITEMS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
+    <div class="first-line">SHOP INDIVIDUAL ITEMS <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon></div>
   </div>
   <div class="fifth-block" tappable (click)="goTo('custom')">
     <div class="block-title">

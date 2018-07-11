@@ -125,22 +125,20 @@ ion-menu .user-meta {
     width: 100%;
     height: 150px;
     padding: 50px 20px;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
 }
 
 ion-menu .user-name {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #FFF;
+    color: #000;
     text-align: right;
     margin-bottom: 0;
     text-transform: uppercase;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
 }
 
 ion-menu .view-profile {
     font-size: 1.4rem;
-    color: #FFF;
+    color: #000;
     text-align: right;
 }
 
@@ -229,5 +227,40 @@ ion-menu ion-icon {
 .cart-button {
     position: absolute;
     right: 15%;
+}
+
+.text-input {
+    height: 45px;
+    overflow: auto !important;
+    -webkit-overflow-scrolling: auto !important;
+}
+
+.cart-bt {
+    position: absolute;
+    right: 14%;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 2rem;
+    text-align: center;
+    background: #fff;
+    color: #7bbfad;
+    border-radius: 50%;
+    margin: 5px 10px 10px 10px;
+    ion-icon {
+        padding: 13px 0 0 0;
+        width: 100%;
+        height: auto;
+        font-size: 2.5rem;
+    }
+}
+
+.content-ios {
+    .cart-bt {
+        ion-icon {
+            font-weight: bold;
+        }
+    }
 }
     
